@@ -1,8 +1,5 @@
-import java.sql.ResultSet;
 import java.util.Random;
 import java.util.Scanner;
-
-import JDBC기초.DAO;
 
 public class Main {
 
@@ -16,7 +13,6 @@ public class Main {
 
 		Scanner sc = new Scanner(System.in);
 		Random rd = new Random();
-		ResultSet rs = null;
 
 		// 어떤 기능을 선택하더라도 dao에서 메소드를 호출하기 위함
 		DAO dao = new DAO();
