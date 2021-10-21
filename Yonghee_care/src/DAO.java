@@ -1,5 +1,4 @@
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,7 +11,7 @@ public class DAO {
 	Connection conn = null;
 	PreparedStatement psmt = null;
 	ResultSet rs = null;
-	KVO kvo = new KVO();
+
 	int result = 0;
 	
 	//DB연결
@@ -125,41 +124,6 @@ public class DAO {
 				close();
 			}
 			return getidpw;
-		}
-		
-		public void selectAll() {
-
-
-			getConn();
-
-			try {
-				String sql = "select * from dama order by leb desc";
-
-				psmt = conn.prepareStatement(sql);
-
-				rs = psmt.executeQuery();
-
-				while (rs.next()) {
-					String getNick = rs.getString(1);
-					String getType = rs.getString(2);
-					int getExp = rs.getInt(3);
-					int getLeb = rs.getInt(4);
-					int getEnergy = rs.getInt(5);
-					String getId = rs.getString(6);
-					Date getDama_date = rs.getDate(7);
-					String getNeeds = rs.getString(8);
-
-					System.out.println(	getId + "\t" + getNick + "\t" + getLeb + "\t" + getExp + "\t");
-
-				}
-			}
-			catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				// 3.데이터베이스 닫아주기
-				close();
-			}
-		
 		}
 
 
