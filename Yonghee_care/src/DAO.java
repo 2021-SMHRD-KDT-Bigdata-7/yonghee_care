@@ -21,9 +21,9 @@ public class DAO {
 
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
-			String url = "jdbc:oracle:thin:@192.168.1.240:1521:xe";
-			String user = "hr";
-			String password = "hr";
+			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
+			String user = "cgi_2_4_1022";
+			String password = "smhrd4";
 			conn = DriverManager.getConnection(url, user, password);
 
 		} catch (Exception e) { // Exception클래스 : 어떠한 오류라도 발생했을 때 catch!
