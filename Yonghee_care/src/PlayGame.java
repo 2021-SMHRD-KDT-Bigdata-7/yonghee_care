@@ -1,15 +1,14 @@
-
 import java.util.Random;
 import java.util.Scanner;
 
 public class PlayGame extends damaMethod {
 
-//	private static idama idama;
+//   private static idama idama;
 	Scanner sc = new Scanner(System.in);
 	Random rd = new Random();
 
 	damaMethod dm = new damaMethod();
-	
+
 	// 다마고치 등록
 
 	public void register() {
@@ -29,7 +28,7 @@ public class PlayGame extends damaMethod {
 				System.out.println("용히가 키워지고 찌뿐뎅 ㅠㅠ");
 			}
 		}
-
+		KVO kvo = new KVO(0,100,1);
 	}
 
 	// 다마고치 키우기
@@ -38,7 +37,7 @@ public class PlayGame extends damaMethod {
 		System.out.println("용히 키우기!!");
 		String[] Ycare = { "밥먹이기", "잠재우기", "놀아주기", "운동하기", "방치우기" };
 		int num = rd.nextInt(5);
-//		String Ycare2 = Ycare[rd.nextInt(5)];
+//      String Ycare2 = Ycare[rd.nextInt(5)];
 		boolean flag = true; // 와일문 빠져나오기 위한 불리언 값
 		int stack = 0; // 두번째 틀렸을 시 에어지 깍기 위한 스택 (노형호가 a 라고 함)
 
@@ -51,26 +50,26 @@ public class PlayGame extends damaMethod {
 			// 하고싶은거 맞추기 if()문
 
 			// 밥먹이기
-			if(Ycare[num].equals("밥먹이기")) {
-				if (Ycare[num].equals(Ycare[menu2-1])) {
+			if (Ycare[num] == ("밥먹이기")) {
+				if (Ycare[num].equals(Ycare[menu2 - 1])) {
 					// 정답- 경험치 40 에너지 ±30
-					 dm.eat();
+					dm.eat();
 					flag = false; // while문 빠져나가기
 				} else {
 					System.out.println("용히는 배가 고푼뎁,,, ");
 					if (stack == 1) {
 						// 에너지 깍기
-//						idama.energyDown();
+//                  idama.energyDown();
 						flag = false;
 					}
 					stack++;
 					continue; // 수민쌤이 맞다고 했음 틀리면 수민쌤책임
 				}
-			}else if(Ycare[num].equals( "잠재우기")) {
+			} else if (Ycare[num] == ("잠재우기")) {
 				// 잠재우기
-				if (Ycare[num].equals( Ycare[menu2-1])) {
+				if (Ycare[num] == (Ycare[menu2 - 1])) {
 					// 정답- 경험치 40 에너지 ±30
-					 dm.sleep();
+					dm.sleep();
 					flag = false;
 
 				} else {
@@ -83,11 +82,11 @@ public class PlayGame extends damaMethod {
 					stack++;
 					continue; // 수민쌤이 맞다고 했음 틀리면 수민쌤책임
 				}
-			}else if(Ycare[num].equals( "놀아주기")) {
+			} else if (Ycare[num] == ("놀아주기")) {
 				// 놀아주기
-				if (Ycare[num].equals( Ycare[menu2-1])) {
+				if (Ycare[num] == (Ycare[menu2 - 1])) {
 					// 정답- 경험치 40 에너지 ±30
-					 dm.roll();
+					dm.roll();
 					flag = false;
 				} else {
 					System.out.println("용히는 띰띰해욤,,,");
@@ -98,12 +97,12 @@ public class PlayGame extends damaMethod {
 					}
 					stack++;
 					continue; // 수민쌤이 맞다고 했음 틀리면 수민쌤책임
-					
+
 				}
-			}else if(Ycare[num].equals( "운동하기")) {
-				if (Ycare[num].equals( Ycare[menu2-1])) {
+			} else if (Ycare[num] == ("운동하기")) {
+				if (Ycare[num] == (Ycare[menu2 - 1])) {
 					// 정답- 경험치 40 에너지 ±30
-					 dm.exer();
+					dm.exer();
 					flag = false;
 				} else {
 					System.out.println("용히는 씩씩!! 건강!! ");
@@ -114,12 +113,12 @@ public class PlayGame extends damaMethod {
 					}
 					stack++;
 					continue; // 수민쌤이 맞다고 했음 틀리면 수민쌤책임
-					
+
 				}
-			}else if(Ycare[num].equals( "방치우기")) {
-				if (Ycare[num] .equals( Ycare[menu2-1])) {
+			} else if (Ycare[num] == ("방치우기")) {
+				if (Ycare[num] == (Ycare[menu2 - 1])) {
 					// 정답- 경험치 40 에너지 ±30
-					 dm.clean();
+					dm.clean();
 					flag = false;
 				} else {
 					System.out.println("용히 똥 쌌어요 ㅠㅠ 치워쥬쎄욤 ");
@@ -130,17 +129,11 @@ public class PlayGame extends damaMethod {
 					}
 					stack++;
 					continue; // 수민쌤이 맞다고 했음 틀리면 수민쌤책임
-					
+
 				}
-			}else {
+			} else {
 				System.out.println("다시입력하세요");
 			}
-			
-			
-			
-			
-			
-			
 
 		}
 

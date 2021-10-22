@@ -6,9 +6,24 @@ public class KVO {
 	int exp;
 	int leb;
 	int energy;
+	int lv;
+	public int getLv() {
+		return lv;
+	}
+	public void setLv(int lv) {
+		this.lv = lv;
+	}
 	String id;
 	Date dama_date;
 	public KVO() {}
+	
+	public KVO(int exp, int energy, int lv) {
+		this.exp = exp;
+		this.energy = energy;
+		this.lv = lv;
+	}
+	
+	
 	public KVO(String nick, String type, int exp, int leb, int energy, String id, Date dama_date) {
 		super();
 		this.nick = nick;
