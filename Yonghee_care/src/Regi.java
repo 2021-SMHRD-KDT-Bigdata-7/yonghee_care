@@ -1,10 +1,12 @@
 import java.sql.Date;
 import java.util.Scanner;
 
-public class Regi extends KVO {
+public class Regi {
    Scanner sc = new Scanner(System.in);
    DAO dao = new DAO();
-   
+   KVO kvo = new KVO();
+   String nick;
+   String xkdlq;
 
    int cnt=0;
    
@@ -12,13 +14,13 @@ public class Regi extends KVO {
 
       System.out.println("다마고치등록");
       System.out.print("별명등록 >>");
-      String nick = sc.next();
+      nick = sc.next();
 
       while (true) {
 
          System.out.print("종류(용희 or 기현 or 형호 or 승지 or 혜인 or 태현)등록 >>");
-         String xkdlq = sc.next();
-
+         xkdlq = sc.next();
+         
          if (xkdlq.equals("용희")) {
             // 아이디 위치에 맞는 별명 등록, 종류 등록
             break;

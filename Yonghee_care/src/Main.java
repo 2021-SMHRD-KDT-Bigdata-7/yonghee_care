@@ -11,6 +11,7 @@ public class Main {
 
       // 어떤 기능을 선택하더라도 dao에서 메소드를 호출하기 위함
       DAO dao = new DAO();
+      Regi regi = new Regi();
       
       //로그인 객체 생성
       Login login = new Login();
@@ -42,6 +43,7 @@ public class Main {
                   int menu2 = sc.nextInt();
                   
                   if(menu2 ==1) {
+                	  regi.register();
 
                   }else if(menu2 ==2) {
                      pg.play();

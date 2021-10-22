@@ -142,8 +142,8 @@ public class DAO {
 
          while (rs.next()) {
             String getNick = rs.getString(1);
-            String getType = rs.getString(2);
-            int getExp = rs.getInt(3);
+            String getxkdlq = rs.getString(2);
+            int getrudgjacl = rs.getInt(3);
             int getLeb = rs.getInt(4);
             int getEnergy = rs.getInt(5);
             String getId = rs.getString(6);
@@ -151,7 +151,7 @@ public class DAO {
             String getNeeds = rs.getString(8);
 
             System.out.println(num + "등" + "\t" + "ID : " + getId + "\t" + "NICK : " + getNick + "\t" + "LEVEL : "
-                  + getLeb + "\t" + "EXP : " + getExp + "\t");
+                  + getLeb + "\t" + "EXP : " + getrudgjacl + "\t");
             num++;
          }
       } catch (Exception e) {
@@ -170,7 +170,7 @@ public class DAO {
             getConn();
 
             // try~catch로 오류를 잡아 줘야함
-            String sql = "insert into dama(nick,xkdlq,rudgjacl,leb,energy) values('?','?',0,1,100)";
+            String sql = "insert into dama(nick,xkdlq,rudgjacl,leb,energy) values(?,?,0,1,100)";
 
             try {
 
@@ -178,11 +178,6 @@ public class DAO {
 
                psmt.setString(1, nick);
                psmt.setString(2, xkdlq);
-//               psmt.setInt(3, rudgjacl);
-//               psmt.setInt(4, leb);
-//               psmt.setInt(5, energy);
-//               psmt.setString(6, id);
-//               psmt.setDate(7, dama_Date);
                
                result = psmt.executeUpdate();
 
