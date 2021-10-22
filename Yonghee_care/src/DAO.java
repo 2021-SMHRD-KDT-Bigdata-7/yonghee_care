@@ -65,7 +65,7 @@ public class DAO {
 		getConn();
 
 		// try~catch로 오류를 잡아 줘야함
-		String sql = "insert into member values(?,?)";
+		String sql = "insert into user_info values(?,?)";
 
 		try {
 
@@ -97,7 +97,7 @@ public class DAO {
 		try {
 			// 실행할 sql문 작성
 
-			String sql = "select * from member where id=? and pw=?";
+			String sql = "select * from user_info where id=? and pw=?";
 
 			psmt = conn.prepareStatement(sql);
 

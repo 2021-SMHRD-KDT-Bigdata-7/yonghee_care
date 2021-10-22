@@ -15,6 +15,9 @@ public class Main {
 		//로그인 객체 생성
 		Login login = new Login();
 		
+		//게임플레이 객체생성
+		PlayGame pg = new PlayGame();
+		
 		boolean result = false;
 
 		while (true) {
@@ -33,9 +36,9 @@ public class Main {
 						int menu2 = sc.nextInt();
 						
 						if(menu2 ==1) {
-							//등록
+							pg.register();
 						}else if(menu2 ==2) {
-							//키우기
+							pg.play();
 						}else if(menu2 == 3) {
 							//상태확인
 						}else if(menu2 == 4) {
@@ -50,6 +53,7 @@ public class Main {
 				}else {
 					continue;
 				}
+				break;
 			} else if (menu == 2) {
 				//회원가입
 				login.join();
