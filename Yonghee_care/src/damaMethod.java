@@ -1,32 +1,10 @@
 public class damaMethod extends KVO implements idama {
  
-   
-   
 
-//   public void getExp(int Exp) {
-//      this.exp = Exp;
-//      while(100 <= this.exp) {
-//         this.lv++;
-//      }
-//      System.out.println("경험치 증가!"+ Exp);
-//   }
-   
-//   public void energyUp(int energy) {
-//	      this.energy += energy;
-//	      
-//	      System.out.println("에너지 업!" + this.energy);
-//	   }
-//   
-//   public void energyDown(int energy) {
-//      this.energy -= energy;
-//      System.out.println("에너지 다운!" + this.energy);
-//   }
-   
-   
    @Override
    // 놀기 선택 했을 때 경험치 +20 , 에너지-15
    public void roll() {
-      setExp(exp + 20);
+      setRudgjacl(rudgjacl + 20);
       setEnergy(energy - 15);
       System.out.println("용히랑 놀아주어서 고마워요 꺄르르");
 
@@ -35,7 +13,7 @@ public class damaMethod extends KVO implements idama {
    // 청소 선택 했을 때 경험치 +30, 에너지-40
    @Override
    public void clean() {
-      setExp(exp + 30);
+      setRudgjacl(rudgjacl + 30);
       setEnergy(energy - 40);
       System.out.println("휴 깨끗해졌다!!");
    }
@@ -52,7 +30,7 @@ public class damaMethod extends KVO implements idama {
    @Override
    public void eat() {
 
-      setExp(exp + 40);
+      setRudgjacl(rudgjacl + 40);
       setEnergy(energy - 30);
       System.out.println("용히의 맘마타임~!");
    }
@@ -60,7 +38,7 @@ public class damaMethod extends KVO implements idama {
    // 잠자기 선택 했을 때 경험치+40, 에너지-30;
    @Override
    public void sleep() {
-      setExp(40);
+      setRudgjacl(40);
       setEnergy(energy + 30);
       System.out.println("용희는 코~ 하고 올게요...");
    }
@@ -68,13 +46,13 @@ public class damaMethod extends KVO implements idama {
 // 경험치가 100일 때 레벨업 / 경험치 초기화
    @Override
    public void levelUp() {
-      if (lv == 15) { // 만렙은 15
+      if (leb == 15) { // 만렙은 15
          System.out.println("용히 키우기 끝!");
-      } else if (exp >= 100) {
-         setLv(lv+1);
-         setExp(0);
+      } else if (rudgjacl >= 100) {
+         setLeb(leb+1);
+         setRudgjacl(0);
 
-         System.out.println("용희 레벨업!!" + "현재 레벨은" + lv);
+         System.out.println("용희 레벨업!!" + "현재 레벨은" + leb);
       }
    }
 
@@ -86,7 +64,7 @@ public class damaMethod extends KVO implements idama {
          System.out.println("죽었다");
          return false;
       }else {
-    	  return true;
+         return true;
       }
    }
 
@@ -95,15 +73,15 @@ public class damaMethod extends KVO implements idama {
    public void printInfo() {
       System.out.println();
       System.out.println("===용히 상태 확인===");
-      System.out.println("experience: " + getExp());
+      System.out.println("experience: " + getRudgjacl());
       System.out.println("energy: "+ getEnergy() );
-      System.out.println("lv: " + getLv());
+      System.out.println("lv: " + getLeb());
    }
 
 @Override
 public void energyDown() {
-	// TODO Auto-generated method stub
-	
+   // TODO Auto-generated method stub
+   
 }
 
 }
