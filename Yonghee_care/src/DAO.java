@@ -98,7 +98,7 @@ public class DAO {
 			// 실행할 sql문 작성
 
 			String sql = "select * from user_info where id=? and pw=?";
-			psmt = null;
+
 			psmt = conn.prepareStatement(sql);
 
 			psmt.setString(1, id);
