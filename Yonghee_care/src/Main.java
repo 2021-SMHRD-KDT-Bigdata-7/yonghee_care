@@ -19,7 +19,7 @@ public class Main {
 		idama id = null;
 		
 		//게임플레이 객체생성
-		PlayGame pg = new PlayGame();
+		
 		
 		boolean result = false;
 
@@ -33,7 +33,7 @@ public class Main {
 				if(login.login() == 1) {   //여기
 					//로그인 성공 후 다마고치 키우기
 					while(true) {
-						
+						PlayGame pg = new PlayGame();
 						System.out.print("[1]다마고치등록 [2]다마고치키우기 [3]다마고치상태확인 [4]랭킹확인 [5]종료 >>");
 						
 						int menu2 = sc.nextInt();
