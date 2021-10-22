@@ -4,14 +4,7 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-		DAO dao = new DAO();
-		
-		System.out.println("hello");
-		dao.selectAll();
-	}
 
-
-	public static boolean login() {
 
 		Scanner sc = new Scanner(System.in);
 		Random rd = new Random();
@@ -25,44 +18,42 @@ public class Main {
 
 			int menu = sc.nextInt();
 
-			if (menu == 1) { /// 로그인
-				while (true) {
-
-					System.out.println("아이디를 입력하세요");
-					String id = sc.next();
-					System.out.println("비밀번호를 입력하세요");
-					String pw = sc.next();
-
-					String[] getidpw = dao.select(id, pw);
-					if (getidpw[0] == id && getidpw[1] == pw) {
-						result = true;
+			if (menu == 1) {
+				//로그인
+				
+				//로그인 성공 후 다마고치 키우기
+				while(true) {
+					
+					System.out.print("[1]다마고치등록 [2]다마고치키우기 [3]다마고치상태확인 [4]랭킹확인 [5]종료 >>");
+					
+					int menu2 = sc.nextInt();
+					
+					if(menu2 ==1) {
+						//등록
+					}else if(menu2 ==2) {
+						//키우기
+					}else if(menu2 == 3) {
+						//상태확인
+					}else if(menu2 == 4) {
+						//랭킹확인
+					}else if(menu2 == 5) {
 						break;
+					}else {
+						System.out.println("다시입력하세요");
 					}
+					
 				}
-
 			} else if (menu == 2) {
-
-				System.out.println("가입 아이디 : ");
-				String id = sc.next();
-				System.out.println("가입 비밀번호 : ");
-				String pw = sc.next();
-
-				// DAO클래스의 insert()에 접근하기위해 객체 생성
-				int cnt = dao.insert(id, pw);
-
-				if (cnt > 0) {
-					System.out.println("가입완료! 어서와요");
-				} else {
-					System.out.println("가입실패,,저리가요");
-				}
-				continue;
-
+				//회원가입
 			} else {
 				System.out.println("프로그램 종료");
 				break;
 
 			}
-		}
-		return result;
+		}	
+		
+		
+
 	}
+
 }
