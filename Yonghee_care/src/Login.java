@@ -17,7 +17,7 @@ public class Login {
 		System.out.println("비밀번호를 입력하세요");
 		String pw = sc.next();
 
-		String[] getidpw = dao.select(id, pw);
+		String[] getidpw = dao.select(id, pw);  ////여기
 		if (getidpw[0] == id && getidpw[1] == pw) {
 			return true;
 

@@ -98,13 +98,13 @@ public class DAO {
 			// 실행할 sql문 작성
 
 			String sql = "select * from user_info where id=? and pw=?";
-
+			psmt = null;
 			psmt = conn.prepareStatement(sql);
 
 			psmt.setString(1, id);
 			psmt.setString(2, pw);
 
-			rs = psmt.executeQuery();
+			rs = psmt.executeQuery();  ///여기
 
 			while (rs.next()) {
 				getidpw[0] = rs.getString(1); // 숫자는 컬럼의 순서
