@@ -1,12 +1,14 @@
 import java.util.Random;
 import java.util.Scanner;
 
-public class PlayGame {
+public class PlayGame extends damaMethod {
 
-	private static idama idama;
+//	private static idama idama;
 	Scanner sc = new Scanner(System.in);
 	Random rd = new Random();
 
+	damaMethod dm = new damaMethod();
+	
 	// 다마고치 등록
 
 	public void register() {
@@ -48,10 +50,10 @@ public class PlayGame {
 			// 하고싶은거 맞추기 if()문
 
 			// 밥먹이기
-			if(Ycare[num] == "밥먹이기") {
-				if (Ycare[num] == Ycare[menu2-1]) {
+			if(Ycare[num].equals("밥먹이기")) {
+				if (Ycare[num].equals(Ycare[menu2-1])) {
 					// 정답- 경험치 40 에너지 ±30
-					idama.eat();
+					 dm.eat();
 					flag = false; // while문 빠져나가기
 				} else {
 					System.out.println("용히는 배가 고푼뎁,,, ");
@@ -63,11 +65,11 @@ public class PlayGame {
 					stack++;
 					continue; // 수민쌤이 맞다고 했음 틀리면 수민쌤책임
 				}
-			}else if(Ycare[num] == "잠재우기") {
+			}else if(Ycare[num].equals( "잠재우기")) {
 				// 잠재우기
-				if (Ycare[num] == Ycare[menu2-1]) {
+				if (Ycare[num].equals( Ycare[menu2-1])) {
 					// 정답- 경험치 40 에너지 ±30
-					idama.sleep();
+					 dm.sleep();
 					flag = false;
 
 				} else {
@@ -80,11 +82,11 @@ public class PlayGame {
 					stack++;
 					continue; // 수민쌤이 맞다고 했음 틀리면 수민쌤책임
 				}
-			}else if(Ycare[num] == "놀아주기") {
+			}else if(Ycare[num].equals( "놀아주기")) {
 				// 놀아주기
-				if (Ycare[num] == Ycare[menu2-1]) {
+				if (Ycare[num].equals( Ycare[menu2-1])) {
 					// 정답- 경험치 40 에너지 ±30
-					idama.roll();
+					 dm.roll();
 					flag = false;
 				} else {
 					System.out.println("용히는 띰띰해욤,,,");
@@ -97,10 +99,10 @@ public class PlayGame {
 					continue; // 수민쌤이 맞다고 했음 틀리면 수민쌤책임
 					
 				}
-			}else if(Ycare[num] == "운동하기") {
-				if (Ycare[num] == Ycare[menu2-1]) {
+			}else if(Ycare[num].equals( "운동하기")) {
+				if (Ycare[num].equals( Ycare[menu2-1])) {
 					// 정답- 경험치 40 에너지 ±30
-					idama.exer();
+					 dm.exer();
 					flag = false;
 				} else {
 					System.out.println("용히는 씩씩!! 건강!! ");
@@ -113,10 +115,10 @@ public class PlayGame {
 					continue; // 수민쌤이 맞다고 했음 틀리면 수민쌤책임
 					
 				}
-			}else if(Ycare[num] == "방치우기") {
-				if (Ycare[num] == Ycare[menu2-1]) {
+			}else if(Ycare[num].equals( "방치우기")) {
+				if (Ycare[num] .equals( Ycare[menu2-1])) {
 					// 정답- 경험치 40 에너지 ±30
-					idama.clean();
+					 dm.clean();
 					flag = false;
 				} else {
 					System.out.println("용히 똥 쌌어요 ㅠㅠ 치워쥬쎄욤 ");

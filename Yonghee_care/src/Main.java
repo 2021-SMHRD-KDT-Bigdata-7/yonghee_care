@@ -16,7 +16,8 @@ public class Main {
 		Login login = new Login();
 		
 		//상태확인을 위한 인터페이스 접근
-		idama id = null;
+//		idama id = null;
+		damaMethod dm = new damaMethod();
 		
 		//게임플레이 객체생성
 		
@@ -44,7 +45,7 @@ public class Main {
 							pg.play();
 						}else if(menu2 == 3) {
 							//상태확인
-							id.printInfo();
+							dm.printInfo();
 						}else if(menu2 == 4) {
 							//랭킹확인
 							

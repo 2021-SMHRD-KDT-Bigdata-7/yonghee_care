@@ -1,9 +1,20 @@
 
 public class damaMethod implements idama {
 
-	private int experience = 0;
-	private int energy = 0;
-	private int lv = 1;
+	int experience = 0;
+	int energy = 0;
+	int lv = 1;
+	
+//	public damaMethod() {
+//		
+//	}
+//
+//	public damaMethod(int experience, int energy, int lv) {
+//		super();
+//		this.experience = experience;
+//		this.energy = energy;
+//		this.lv = lv;
+//	}
 
 	@Override
 	// 놀기 선택 했을 때 경험치 +20 , 에너지-15
@@ -81,6 +92,7 @@ public class damaMethod implements idama {
 // 현재 상태 확인
 	@Override
 	public void printInfo() {
+		System.out.println();
 		System.out.println("===용히 상태 확인===");
 		System.out.println("experience: " + experience);
 		System.out.println("energy: " + energy);
