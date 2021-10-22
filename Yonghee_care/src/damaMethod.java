@@ -21,6 +21,7 @@ public class damaMethod extends KVO implements idama {
    // 운동 선택 했을 때 경험치 +40, 에너지 -30
    @Override
    public void exer() {
+	   setRudgjacl(rudgjacl + 40);
       setEnergy(energy - 30);
       System.out.println("용히는 건강해져따!!");
 
@@ -31,14 +32,14 @@ public class damaMethod extends KVO implements idama {
    public void eat() {
 
       setRudgjacl(rudgjacl + 40);
-      setEnergy(energy - 30);
+      setEnergy(energy + 30);
       System.out.println("용히의 맘마타임~!");
    }
 
    // 잠자기 선택 했을 때 경험치+40, 에너지-30;
    @Override
    public void sleep() {
-      setRudgjacl(40);
+      setRudgjacl(rudgjacl + 40);
       setEnergy(energy + 30);
       System.out.println("용희는 코~ 하고 올게요...");
    }
@@ -49,11 +50,17 @@ public class damaMethod extends KVO implements idama {
       if (leb == 15) { // 만렙은 15
          System.out.println("용히 키우기 끝!");
       } else if (rudgjacl >= 100) {
-         setLeb(leb+1);
-         setRudgjacl(0);
+         setLeb(leb + 1);
+         
+         setRudgjacl(rudgjacl - 100);
 
          System.out.println("용희 레벨업!!" + "현재 레벨은" + leb);
       }
+   }
+
+   @Override
+   public void energyDown() {
+	     setEnergy(energy - 10);
    }
 
    // 에너지가 0이 되면 죽음
@@ -75,13 +82,9 @@ public class damaMethod extends KVO implements idama {
       System.out.println("===용히 상태 확인===");
       System.out.println("experience: " + getRudgjacl());
       System.out.println("energy: "+ getEnergy() );
-      System.out.println("lv: " + getLeb());
+      System.out.println("leb: " + getLeb());
    }
 
-@Override
-public void energyDown() {
-   // TODO Auto-generated method stub
-   
-}
+
 
 }

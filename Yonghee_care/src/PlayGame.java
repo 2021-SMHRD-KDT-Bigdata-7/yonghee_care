@@ -50,6 +50,7 @@ public class PlayGame extends damaMethod {
                stack++;
                continue; // 수민쌤이 맞다고 했음 틀리면 수민쌤책임
             }
+            dm.levelUp();
          } else if (Ycare[num] == ("잠재우기")) {
             // 잠재우기
             if (Ycare[num] == (Ycare[menu2 - 1])) {
@@ -67,6 +68,7 @@ public class PlayGame extends damaMethod {
                stack++;
                continue; // 수민쌤이 맞다고 했음 틀리면 수민쌤책임
             }
+            dm.levelUp();
          } else if (Ycare[num] == ("놀아주기")) {
             // 놀아주기
             if (Ycare[num] == (Ycare[menu2 - 1])) {
@@ -84,6 +86,7 @@ public class PlayGame extends damaMethod {
                continue; // 수민쌤이 맞다고 했음 틀리면 수민쌤책임
 
             }
+            dm.levelUp();
          } else if (Ycare[num] == ("운동하기")) {
             if (Ycare[num] == (Ycare[menu2 - 1])) {
                // 정답- 경험치 40 에너지 ±30
@@ -100,6 +103,7 @@ public class PlayGame extends damaMethod {
                continue; // 수민쌤이 맞다고 했음 틀리면 수민쌤책임
 
             }
+            dm.levelUp();
          } else if (Ycare[num] == ("방치우기")) {
             if (Ycare[num] == (Ycare[menu2 - 1])) {
                // 정답- 경험치 40 에너지 ±30
@@ -116,9 +120,12 @@ public class PlayGame extends damaMethod {
                continue; // 수민쌤이 맞다고 했음 틀리면 수민쌤책임
 
             }
+            dm.levelUp();
          } else {
             System.out.println("다시입력하세요");
          }
+         
+         
 
       }
 
