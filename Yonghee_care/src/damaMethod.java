@@ -1,9 +1,8 @@
 
-public class damaMethod implements idama {
-
-	int experience = 0;
-	int energy = 0;
+public class damaMethod extends Acc implements idama {
+ 
 	int lv = 1;
+	Acc acc = new Acc();
 	
 //	public damaMethod() {
 //		
@@ -19,8 +18,8 @@ public class damaMethod implements idama {
 	@Override
 	// 놀기 선택 했을 때 경험치 +20 , 에너지-15
 	public void roll() {
-		experience += 20;
-		energy -= 15;
+		acc.exp += 20;
+		acc.energy -= 15;
 		System.out.println("용히랑 놀아주어서 고마워요 꺄르르");
 
 	}
@@ -28,16 +27,15 @@ public class damaMethod implements idama {
 	// 청소 선택 했을 때 경험치 +30, 에너지-40
 	@Override
 	public void clean() {
-		experience += 30;
-		energy -= 40;
+		acc.exp += 30;
+		acc.energy -= 40;
 		System.out.println("휴 깨끗해졌다!!");
 	}
 
 	// 운동 선택 했을 때 경험치 +40, 에너지 -30
 	@Override
 	public void exer() {
-		experience += 40;
-		energy -= 30;
+		acc.energy -= 30;
 		System.out.println("용히는 건강해져따!!");
 
 	}
@@ -46,7 +44,7 @@ public class damaMethod implements idama {
 	@Override
 	public void eat() {
 
-		experience += 40;
+		acc.exp += 40;
 		energy += 30;
 		System.out.println("용히의 맘마타임~!");
 	}
@@ -54,7 +52,7 @@ public class damaMethod implements idama {
 	// 잠자기 선택 했을 때 경험치+40, 에너지-30;
 	@Override
 	public void sleep() {
-		experience += 40;
+		acc.exp += 40;
 		energy += 30;
 		System.out.println("용희는 코~ 하고 올게요...");
 	}
@@ -64,9 +62,9 @@ public class damaMethod implements idama {
 	public void levelUp() {
 		if (lv == 15) { // 만렙은 15
 			System.out.println("용히 키우기 끝!");
-		} else if (experience >= 100) {
+		} else if (acc.exp >= 100) {
 			lv++;
-			experience = 0;
+			acc.exp = 0;
 
 			System.out.println("용희 레벨업!!" + "현재 레벨은" + lv);
 		}
@@ -94,7 +92,7 @@ public class damaMethod implements idama {
 	public void printInfo() {
 		System.out.println();
 		System.out.println("===용히 상태 확인===");
-		System.out.println("experience: " + experience);
+		System.out.println("experience: " + acc.exp);
 		System.out.println("energy: " + energy);
 		System.out.println("lv: " + lv);
 	}
