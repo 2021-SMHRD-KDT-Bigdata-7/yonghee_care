@@ -5,10 +5,12 @@ public class Login {
 	Scanner sc = new Scanner(System.in);
 	Random rd = new Random();
 
-	// 어떤 기능을 선택하더라도 dao에서 메소드를 호출하기 위함
+	
+	int cnt = 0;
+	
 	DAO dao = new DAO();
 
-	public boolean login() {
+	public int login() {
 
 		/// 로그인
 
@@ -17,16 +19,12 @@ public class Login {
 		System.out.println("비밀번호를 입력하세요");
 		String pw = sc.next();
 
-		String[] getidpw = dao.select(id, pw);  ////여기
-		if (getidpw[0] == id && getidpw[1] == pw) {
-			return true;
+		cnt = dao.select(id, pw);
 
-		} else {
-			System.out.println("아이디나 비밀번호가 틀립니다.");
-			return false;
-		}
-
+		dao.close();
+		return cnt;
 	}
+	
 
 	public boolean join() {
 		System.out.println("가입 아이디 : ");

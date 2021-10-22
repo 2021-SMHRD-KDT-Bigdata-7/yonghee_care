@@ -89,10 +89,9 @@ public class DAO {
 	// 로그인
 	// 회원 정보 Select 메소드
 
-	public String[] select(String id, String pw) {
+	public int select(String id, String pw) {
 
 		getConn();
-		String[] getidpw = new String[2];
 
 		try {
 			// 실행할 sql문 작성
@@ -104,13 +103,20 @@ public class DAO {
 			psmt.setString(1, id);
 			psmt.setString(2, pw);
 
-			rs = psmt.executeQuery();  ///여기
+			rs = psmt.executeQuery();
 
+			
 			while (rs.next()) {
-				getidpw[0] = rs.getString(1); // 숫자는 컬럼의 순서
-				getidpw[1] = rs.getString(2);
-			}
+				String getId = rs.getString(1); // 숫자는 컬럼의 순서
+				String getPw = rs.getString(2);
 
+				System.out.println(getId + "/" + getPw);
+				
+				
+				if(rs != null) {
+					result = 1; 
+				}
+			}
 		} catch (Exception e) {
 
 			e.printStackTrace();
@@ -118,8 +124,9 @@ public class DAO {
 		} finally {
 			close();
 		}
-		return getidpw;
+		return result;
 	}
+	
 
 	public void selectAll() {
 

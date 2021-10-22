@@ -30,7 +30,7 @@ public class Main {
 
 			if (menu == 1) {
 				//로그인
-				if(login.login() == true) {   //여기
+				if(login.login() == 1) {   //여기
 					//로그인 성공 후 다마고치 키우기
 					while(true) {
 						
