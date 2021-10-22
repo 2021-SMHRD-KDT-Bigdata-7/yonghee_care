@@ -17,7 +17,6 @@ public class Main {
 		
 		//상태확인을 위한 인터페이스 접근
 //		idama id = null;
-		damaMethod dm = new damaMethod();
 		
 		//게임플레이 객체생성
 		
@@ -43,12 +42,16 @@ public class Main {
 							pg.register();
 						}else if(menu2 ==2) {
 							pg.play();
+							if(pg.endGame() == false) {
+								break;
+							}
+							pg.levelUp();
 						}else if(menu2 == 3) {
 							//상태확인
-							dm.printInfo();
+							pg.printInfo();
 						}else if(menu2 == 4) {
 							//랭킹확인
-							dao.selectAll();
+							
 						}else if(menu2 == 5) {
 							break;
 						}else {
@@ -64,10 +67,12 @@ public class Main {
 				//회원가입
 				login.join();
 				
-			} else {
+			}else if(menu ==3) {
 				System.out.println("프로그램 종료");
-				break;
-
+				break;				
+			}
+			else {
+				System.out.println("다시입력하세요");
 			}
 		}	
 		

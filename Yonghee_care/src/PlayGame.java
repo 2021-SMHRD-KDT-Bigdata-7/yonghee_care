@@ -1,3 +1,4 @@
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -76,7 +77,7 @@ public class PlayGame extends damaMethod {
 					System.out.println("용히는 조용희있고 시푼뎁,,,");
 					if (stack == 1) {
 						// 에너지 깍기
-//						idama.energyDown();
+						dm.energyDown();
 						flag = false;
 					}
 					stack++;
@@ -92,7 +93,7 @@ public class PlayGame extends damaMethod {
 					System.out.println("용히는 띰띰해욤,,,");
 					if (stack == 1) {
 						// 에너지 깍기
-//						idama.energyDown();
+						dm.energyDown();
 						flag = false;
 					}
 					stack++;
@@ -108,7 +109,7 @@ public class PlayGame extends damaMethod {
 					System.out.println("용히는 씩씩!! 건강!! ");
 					if (stack == 1) {
 						// 에너지 깍기
-//						idama.energyDown();
+						dm.energyDown();
 						flag = false;
 					}
 					stack++;
@@ -124,7 +125,7 @@ public class PlayGame extends damaMethod {
 					System.out.println("용히 똥 쌌어요 ㅠㅠ 치워쥬쎄욤 ");
 					if (stack == 1) {
 						// 에너지 깍기
-//						idama.energyDown();
+						dm.energyDown();
 						flag = false;
 					}
 					stack++;
