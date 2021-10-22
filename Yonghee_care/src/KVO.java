@@ -3,9 +3,9 @@ import java.sql.Date;
 public class KVO {
    String nick;
    String xkdlq;
-   int rudgjacl = 0;
-   int leb = 1;
-   int energy = 100;
+   int rudgjacl;
+   int leb;
+   int energy;
    String id;
    Date dama_date;
    public KVO() {}
@@ -19,6 +19,13 @@ public class KVO {
       this.id = id;
       this.dama_date = dama_date;
    }
+   public KVO(int rudgjacl, int leb, int energy) {
+	      super();
+	      this.rudgjacl = rudgjacl;
+	      this.leb = leb;
+	      this.energy = energy;
+	   }
+
    public String getNick() {
       return nick;
    }

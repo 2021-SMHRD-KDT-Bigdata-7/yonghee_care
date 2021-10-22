@@ -1,20 +1,21 @@
 import java.sql.Date;
 import java.util.Scanner;
 
-public class Regi {
+public class Regi extends KVO{
    Scanner sc = new Scanner(System.in);
    DAO dao = new DAO();
-   KVO kvo = new KVO();
+   KVO kvo = new KVO(0,1,100);
    String nick;
    String xkdlq;
 
    int cnt=0;
-   
+
    public void register() {
 
       System.out.println("다마고치등록");
       System.out.print("별명등록 >>");
       nick = sc.next();
+
 
       while (true) {
 
@@ -36,7 +37,8 @@ public class Regi {
       } else {
          System.out.println("저장 실패");
       }
-
+     
+      
    }
 
 }

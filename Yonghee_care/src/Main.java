@@ -15,7 +15,7 @@ public class Main {
       
       //로그인 객체 생성
       Login login = new Login();
-      
+      KVO kvo = new KVO();
       //상태확인을 위한 인터페이스 접근
 //      idama id = null;
       
@@ -44,6 +44,7 @@ public class Main {
                   
                   if(menu2 ==1) {
                 	  regi.register();
+                	  System.out.print(kvo.getRudgjacl()+""+ kvo.getLeb()+""+ kvo.getEnergy());
 
                   }else if(menu2 ==2) {
                      pg.play();
