@@ -10,27 +10,15 @@ public class PlayGame extends damaMethod {
 	damaMethod dm = new damaMethod();
 
 	// 다마고치 등록
-
-	public void register() {
-
-		System.out.println("다마고치등록");
-		System.out.print("별명등록 >>");
-		String nick = sc.next();
-
-		while (true) {
-
-			System.out.print("종류(용희 or 기현 or 형호 or 승지 or 혜인 or 태현)등록 >>");
-			String type = sc.next();
-			if (type.equals("용희")) {
-				// 아이디 위치에 맞는 별명 등록, 종류 등록
-				break;
-			} else {
-				System.out.println("용히가 키워지고 찌뿐뎅 ㅠㅠ");
-			}
-		}
-		KVO kvo = new KVO(0,100,1);
+	public PlayGame() {
+		
 	}
-
+	public PlayGame(int exp, int energy, int lv) {
+		this.exp = exp;
+		this.energy = energy;
+		this.lv = lv;
+	}
+	
 	// 다마고치 키우기
 	public void play() {
 
@@ -51,7 +39,7 @@ public class PlayGame extends damaMethod {
 
 			// 밥먹이기
 			if (Ycare[num] == ("밥먹이기")) {
-				if (Ycare[num].equals(Ycare[menu2 - 1])) {
+				if (Ycare[num] == Ycare[menu2 - 1]) {
 					// 정답- 경험치 40 에너지 ±30
 					dm.eat();
 					flag = false; // while문 빠져나가기
