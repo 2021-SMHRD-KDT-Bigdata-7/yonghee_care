@@ -48,7 +48,7 @@ public class Main {
 							dm.printInfo();
 						}else if(menu2 == 4) {
 							//랭킹확인
-							
+							dao.selectAll();
 						}else if(menu2 == 5) {
 							break;
 						}else {
