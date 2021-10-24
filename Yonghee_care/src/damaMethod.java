@@ -1,5 +1,9 @@
+
 public class damaMethod extends KVO implements idama {
- 
+	
+	DAO2 dao = new DAO2();
+	
+	
 
    @Override
    // 놀기 선택 했을 때 경험치 +20 , 에너지-15
@@ -48,13 +52,14 @@ public class damaMethod extends KVO implements idama {
    @Override
    public void levelUp() {
       if (leb == 15) { // 만렙은 15
-         System.out.println("용히 키우기 끝!");
+    	  System.out.println("용히 키우기 끝!");
       } else if (rudgjacl >= 100) {
          setLeb(leb + 1);
          
          setRudgjacl(rudgjacl - 100);
 
-         System.out.println("용희 레벨업!!" + "현재 레벨은" + leb);
+         System.out.println("용희 레벨업!!" + "현재 레벨은 " + leb);
+         System.out.println();
       }
    }
 
@@ -67,7 +72,7 @@ public class damaMethod extends KVO implements idama {
    @Override
    public boolean endGame() {
 
-      if (getEnergy() <= 0) {
+      if (getEnergy() <= -1000) {
          System.out.println("죽었다");
          return false;
       }else {
@@ -78,7 +83,6 @@ public class damaMethod extends KVO implements idama {
 // 현재 상태 확인
    @Override
    public void printInfo() {
-      System.out.println();
       System.out.println("===용히 상태 확인===");
       System.out.println("experience: " + getRudgjacl());
       System.out.println("energy: "+ getEnergy() );

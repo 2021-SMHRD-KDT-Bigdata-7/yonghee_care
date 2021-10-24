@@ -38,7 +38,7 @@ public class Regi extends KVO{
       cnt = dao.insertreg(id,nick,xkdlq);
       
       if (cnt > 0) {
-         System.out.println("시작!");
+         System.out.println("생성완료!!");
       } else {
          System.out.println("동일한 별명이 있어요!");
       }

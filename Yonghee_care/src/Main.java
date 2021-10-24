@@ -66,6 +66,7 @@ public class Main {
                      pg.levelUp();
                   }else if(menu2 == 3) {
                      //상태확인
+                	  dao.selectstate(id);
                      pg.printInfo();
                   }else if(menu2 == 4) {
                      //랭킹확인
