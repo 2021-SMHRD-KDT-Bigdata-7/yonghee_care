@@ -5,7 +5,7 @@ public class KVO {
    String xkdlq;
    int rudgjacl;
    int leb;
-   int energy;
+   int energy = 0 ;
    String id;
    Date dama_date;
    public KVO() {}

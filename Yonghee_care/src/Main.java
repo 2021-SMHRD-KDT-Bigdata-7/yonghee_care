@@ -9,10 +9,13 @@ public class Main {
       Scanner sc = new Scanner(System.in);
       Random rd = new Random();
 
+      String id = null;
+      String pw = null;
+      
       // 어떤 기능을 선택하더라도 dao에서 메소드를 호출하기 위함
       DAO dao = new DAO();
       Regi regi = new Regi();
-      
+      PlayGame pg = new PlayGame();
       //로그인 객체 생성
       Login login = new Login();
       KVO kvo = new KVO();
@@ -31,9 +34,16 @@ public class Main {
 
          if (menu == 1) {
             //로그인
-            PlayGame pg = new PlayGame();
-            
-            if(login.login() == 1) {   //여기
+
+        		System.out.println("아이디를 입력하세요");
+        		id = sc.next();
+        		System.out.println("비밀번호를 입력하세요");
+        		pw = sc.next();
+
+        		int cnt = dao.select(id, pw);
+
+        	
+            if(login.login(id, pw) == 1) {   //여기
                //로그인 성공 후 다마고치 키우기
                while(true) {
                   
@@ -43,13 +53,15 @@ public class Main {
                   int menu2 = sc.nextInt();
                   
                   if(menu2 ==1) {
+                	  
                 	  regi.register();
-                	  System.out.print(kvo.getRudgjacl()+""+ kvo.getLeb()+""+ kvo.getEnergy());
-
+                	  
                   }else if(menu2 ==2) {
                      pg.play();
+                     
                      if(pg.endGame() == false) {
-                        break;
+                        dao.deletedama(id);
+                    	 break;
                      }
                      pg.levelUp();
                   }else if(menu2 == 3) {
@@ -57,7 +69,7 @@ public class Main {
                      pg.printInfo();
                   }else if(menu2 == 4) {
                      //랭킹확인
-                     
+                     dao.selectAll();
                   }else if(menu2 == 5) {
                      break;
                   }else {
@@ -82,8 +94,7 @@ public class Main {
          }
       }   
       
-      
+
 
    }
-
 }

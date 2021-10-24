@@ -10,14 +10,14 @@ public class Login {
 	
 	DAO dao = new DAO();
 
-	public int login() {
+	public int login(String id, String pw) {
 
 		/// 로그인
 
-		System.out.println("아이디를 입력하세요");
-		String id = sc.next();
-		System.out.println("비밀번호를 입력하세요");
-		String pw = sc.next();
+//		System.out.println("아이디를 입력하세요");
+//		String id = sc.next();
+//		System.out.println("비밀번호를 입력하세요");
+//		String pw = sc.next();
 
 		cnt = dao.select(id, pw);
 

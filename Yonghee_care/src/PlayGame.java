@@ -22,11 +22,10 @@ public class PlayGame extends damaMethod {
       System.out.println("용히 키우기!!");
       String[] Ycare = { "밥먹이기", "잠재우기", "놀아주기", "운동하기", "방치우기" };
       int num = rd.nextInt(5);
-//      String Ycare2 = Ycare[rd.nextInt(5)];
       boolean flag = true; // 와일문 빠져나오기 위한 불리언 값
       int stack = 0; // 두번째 틀렸을 시 에어지 깍기 위한 스택 (노형호가 a 라고 함)
 
-      // 용희캐릭터
+      // 용희캐릭터 시작
       while (flag) {
          System.out.println("용히는 뭐하고시풀까용? 히~");
          System.out.println("[1]밥먹이기 [2]잠재우기 [3]놀아주기 [4]운동하기 [5]방치우기 >>");

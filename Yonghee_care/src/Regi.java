@@ -7,11 +7,16 @@ public class Regi extends KVO{
    KVO kvo = new KVO(0,1,100);
    String nick;
    String xkdlq;
+   String id;
 
    int cnt=0;
 
    public void register() {
 
+	   
+	  System.out.println("아이디를 확인 해주세요");
+	  id = sc.next();
+	  
       System.out.println("다마고치등록");
       System.out.print("별명등록 >>");
       nick = sc.next();
@@ -30,12 +35,12 @@ public class Regi extends KVO{
          }
 
       }
-      cnt = dao.insertreg(nick,xkdlq);
+      cnt = dao.insertreg(id,nick,xkdlq);
       
       if (cnt > 0) {
-         System.out.println("저장 완료");
+         System.out.println("시작!");
       } else {
-         System.out.println("저장 실패");
+         System.out.println("동일한 별명이 있어요!");
       }
      
       
