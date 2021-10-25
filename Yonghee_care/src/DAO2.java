@@ -124,22 +124,26 @@ public class DAO2 {
 			
 			rs = psmt.executeQuery();
 			System.out.println("\n====(*용희*) 상태확인=====\n");
-
-			String getNick = rs.getString(1);
-			int getLeb = rs.getInt(4);
-			int getEnergy = rs.getInt(5);
-			//경험치
-			String getDama_date = rs.getString(7);
-
-			//현재는 에너지로 해놓을테지만 경험치 불러와야함
-			//에너지도 넣으면 좋겠네
-			System.out.println("NICK : " + getNick );
-			System.out.println("LEVEL : "+ getLeb);
-			System.out.println("ENERGY : " + getEnergy);
-			System.out.println();
 			
-			if (rs != null) {
-				result = 1;
+			while(rs.next()) {
+				
+				String getNick = rs.getString(1);
+				int getLeb = rs.getInt(4);
+				int getEnergy = rs.getInt(5);
+				int getRudgjacl = rs.getInt(3);
+				String getDama_date = rs.getString(7);
+
+				System.out.println("NICK : " + getNick );
+				System.out.println("LEVEL : "+ getLeb);
+				System.out.println("ENERGY : " + getEnergy);
+				System.out.println("EXP : " + getRudgjacl);
+				System.out.println("Date : " + getDama_date);
+				
+				System.out.println();
+				
+				if (rs != null) {
+					result = 1;
+				}
 			}
 		
 
@@ -320,17 +324,18 @@ public class DAO2 {
 	
 	//level update
 	//다시
-	public int lebupdate(String nick , int leb) {
+	public int lebupdate(String nick , int leb, int rudgjacl) {
 
 		getConn();
 		int result = 0;
 		try {
-			String sql = "update dama set leb=? where nick=?";
+			String sql = "update dama set leb=?, rudgjacl=? where nick=?";
 
 			psmt = conn.prepareStatement(sql);
 
 			psmt.setInt(1,leb);
-			psmt.setString(2, nick);
+			psmt.setInt(2,rudgjacl);
+			psmt.setString(3, nick);
 
 			result = psmt.executeUpdate();
 

@@ -12,9 +12,7 @@ public class PlayGame extends damaMethod {
    // 다마고치 등록
 
    
-   public void printInfo() {
-      dm.printInfo();
-   }
+   
    
    // 다마고치 키우기
    public void play() {
@@ -129,5 +127,8 @@ public class PlayGame extends damaMethod {
       }
 
    }
+   public void printInfo() {
+	      dm.printInfo();
+	   }
 
 }
