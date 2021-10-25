@@ -10,7 +10,7 @@ public class DAO2 {
 	Connection conn = null;
 	PreparedStatement psmt = null;
 	ResultSet rs = null;
-	int result = 0;
+	
 
 	//DB연결
 	public void getConn() {
@@ -53,7 +53,8 @@ public class DAO2 {
 	public int insert(String id, String pw) {
 
 		getConn();
-
+		int result = 0;
+		
 		String sql = "insert into user_info values(?,?)";
 
 		try {
@@ -77,10 +78,11 @@ public class DAO2 {
 
 	// 로그인
 	// 회원 정보 Select 메소드
-	public boolean select(String id, String pw) {
+	public int select(String id, String pw) {
 
 		getConn();
-
+		int result = 0;
+		
 		try {
 
 			String sql = "select * from user_info where id=? and pw=?";
@@ -94,7 +96,7 @@ public class DAO2 {
 			while(rs.next()) {
 				
 				if (rs != null) {
-					return true;
+					result = 1;
 				}
 			}
 		} catch (Exception e) {
@@ -104,14 +106,14 @@ public class DAO2 {
 		} finally {
 			close();
 		}
-		return false;
+		return result;
 	}
 	
 	//상태확인
-	public boolean selectstate(String nick) {
+	public int selectstate(String nick) {
 		
 		getConn();
-		
+		int result = 0;
 		try {
 			
 			String sql = "select * from dama where nick=?";
@@ -137,7 +139,7 @@ public class DAO2 {
 			System.out.println();
 			
 			if (rs != null) {
-				return true;
+				result = 1;
 			}
 		
 
@@ -148,15 +150,17 @@ public class DAO2 {
 		} finally {
 			close();
 		}
-		return false;
+		return result;
 	}
 	
 
  
 	//어따썼는지를 모르겠어요
-	public boolean selectnick(String nick) {
+	public int selectnick(String nick) {
 		
 		getConn();
+		int result = 0;
+		
 		try {
 			
 			String sql = "select * from dama where nick=?";
@@ -173,7 +177,7 @@ public class DAO2 {
 				System.out.println(getNick);
 				
 				if (rs != null) {
-					return true;
+					result = 1;
 				}
 			}
 		} catch (Exception e) {
@@ -183,15 +187,15 @@ public class DAO2 {
 		} finally {
 			close();
 		}
-		return false;
+		return result;
 	}
 
 	
 	//나의 모든 캐릭터 출력
-	public boolean selectchar(String id) {
+	public int selectchar(String id) {
 		
 		getConn();
-		
+		int result = 0;
 		try {
 			// 실행할 sql문 작성
 			
@@ -215,7 +219,7 @@ public class DAO2 {
 						+ getLeb + "\t" + "date : " + getDama_date);
 				
 				if (rs != null) {
-					return true;
+					result = 1;
 				}
 			}
 		} catch (Exception e) {
@@ -225,7 +229,7 @@ public class DAO2 {
 		} finally {
 			close();
 		}
-		return false;
+		return result;
 	}
 
 	
@@ -269,7 +273,7 @@ public class DAO2 {
 	public int insertreg(String id, String nick, String xkdlq) {
 
 		getConn();
-
+		int result = 0;
 		String sql = "insert into dama(nick,xkdlq,rudgjacl,leb,energy, id) values(?,?,0,1,100,?)";
 
 		try {
@@ -319,7 +323,7 @@ public class DAO2 {
 	public int lebupdate(String nick , int leb) {
 
 		getConn();
-
+		int result = 0;
 		try {
 			String sql = "update dama set leb=? where nick=?";
 
@@ -346,7 +350,7 @@ public class DAO2 {
 	public int energyupdate(String nick , int energy) {
 
 		getConn();
-
+		int result = 0;
 		try {
 			String sql = "update dama set energy=? where nick=?";
 

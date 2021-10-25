@@ -39,8 +39,8 @@ public class Main2 {
 				System.out.println("비밀번호를 입력하세요");
 				kvo.pw = sc.next();
 
-		
-				if (dao.select(kvo.id, kvo.pw)) {
+				int cnt = dao.select(kvo.id, kvo.pw);
+				if (cnt == 1) {
 					// 로그인 성공 후 다마고치 선택
 					while (true) {
 
@@ -54,10 +54,12 @@ public class Main2 {
 
 						} else if (menu2 == 2) {
 							//선택한 캐릭터 불러오기
-							if (dao.selectchar(kvo.id)) {
+							int cnt2 = dao.selectchar(kvo.id);
+							if (cnt2 == 1) {
 								System.out.println("선택할캐릭터의 닉네임을 입력해주세요 >>>");
 								kvo.nick = sc.next();
-								if(dao.selectnick(kvo.nick)) break;
+								int cnt3 = dao.selectnick(kvo.nick);
+								if(cnt3 == 1) break;
 								else continue;
 							} else {
 								break;
