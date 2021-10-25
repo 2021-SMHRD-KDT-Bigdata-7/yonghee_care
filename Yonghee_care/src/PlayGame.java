@@ -127,8 +127,6 @@ public class PlayGame extends damaMethod {
       }
 
    }
-   public void printInfo() {
-	      dm.printInfo();
-	   }
+
 
 }
