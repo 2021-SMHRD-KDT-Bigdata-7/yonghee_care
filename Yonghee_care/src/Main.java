@@ -16,6 +16,8 @@ public class Main {
 		kvo.id = null;
 		kvo.pw = null;
 		kvo.nick = null;
+		String id =null;
+		String pw = null;
 
 		// 寃뚯엫�뵆�젅�씠 媛앹껜�깮�꽦
 
@@ -35,6 +37,7 @@ public class Main {
 				kvo.pw = sc.next();
 
 				int cnt = dao.select(kvo.id, kvo.pw);
+				
 				if (cnt == 1) {
 					// 濡쒓렇�씤 �꽦怨� �썑 �떎留덇퀬移� �꽑�깮
 					while (true) {
@@ -44,7 +47,7 @@ public class Main {
 						int menu2 = sc.nextInt();
 
 						if (menu2 == 1) {
-							regi.register();
+							regi.register(kvo.id);
 							continue;
 
 						} else if (menu2 == 2) {
@@ -84,6 +87,7 @@ public class Main {
 							dao.selectstate(kvo.nick);
 						} else if (menu3 == 3) {
 							// �옲�궧�솗�씤
+					
 							dao.selectRank();
 						} else if (menu3 == 4) {
 							break;

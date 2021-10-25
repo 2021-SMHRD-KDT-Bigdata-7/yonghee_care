@@ -11,20 +11,20 @@ public class Login {
 	DAO dao = new DAO();
 
 	//�븘�슂�뾾�쓬
-	public int login(String id, String pw) {
-
-		/// 濡쒓렇�씤
-
+//	public int login(String id, String pw) {
+//
+//		/// 濡쒓렇�씤
+//
 //		System.out.println("�븘�씠�뵒瑜� �엯�젰�븯�꽭�슂");
 //		String id = sc.next();
 //		System.out.println("鍮꾨�踰덊샇瑜� �엯�젰�븯�꽭�슂");
 //		String pw = sc.next();
-
-		cnt = dao.select(id, pw);
-		
-		dao.close();
-		return cnt;
-	}
+//
+//		cnt = dao.select(id, pw);
+//		
+//		dao.close();
+//		return cnt;
+//	}
 	
 
 	public boolean join() {

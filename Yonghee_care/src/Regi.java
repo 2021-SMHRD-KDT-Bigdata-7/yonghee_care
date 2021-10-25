@@ -7,11 +7,10 @@ public class Regi extends KVO{
    KVO kvo = new KVO();
    String nick;
    String dmtype;
-   String id;
 
    int cnt=0;
 
-   public void register() {
+   public void register(String id) {
 	  
       System.out.println("다마고치등록");
       System.out.print("별명등록 >> ");

@@ -243,7 +243,7 @@ public class DAO {
 		getConn();
 
 		try {
-			String sql = "Select * from DAMA order by leb desc";
+			String sql = "Select * from DAMA order by lv desc";
 
 			psmt = conn.prepareStatement(sql);
 
@@ -336,7 +336,6 @@ public class DAO {
 			psmt.setInt(1,lv);
 			psmt.setInt(2,dmexp);
 			psmt.setString(3, nick);
-
 
 		} catch (SQLException e) {
 
