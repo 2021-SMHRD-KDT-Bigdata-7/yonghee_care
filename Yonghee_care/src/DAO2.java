@@ -10,12 +10,9 @@ public class DAO2 {
 	Connection conn = null;
 	PreparedStatement psmt = null;
 	ResultSet rs = null;
-	KVO kvo = new KVO()	;
-	int daoleb=0;
 	int result = 0;
 
-	// DB연결
-
+	//DB연결
 	public void getConn() {
 
 		try {
@@ -27,17 +24,13 @@ public class DAO2 {
 			String password = "smhrd4";
 			conn = DriverManager.getConnection(url, user, password);
 
-		} catch (Exception e) { // Exception클래스 : 어떠한 오류라도 발생했을 때 catch!
-
+		} catch (Exception e) {
 			System.out.println("연결 오류발생!!!!");
-
 			e.printStackTrace();
-
 		}
 	}
 
-	// DB종료
-
+	//DB연결 종료
 	public void close() {
 		try {
 
@@ -56,10 +49,7 @@ public class DAO2 {
 		}
 	}
 
-	// 회원가입 아이디 비밀번호 입력
-
-	// 회원 정보 Insert 메소드
-
+	//회원정보 입력
 	public int insert(String id, String pw) {
 
 		getConn();
@@ -75,17 +65,6 @@ public class DAO2 {
 
 			result = psmt.executeUpdate();
 			
-			 if (kvo.leb == 15) { // 만렙은 15
-		    	  System.out.println("용히 키우기 끝!");
-		      } else if (kvo.rudgjacl >= 100) {
-		         kvo.setLeb(kvo.leb + 1);
-		         
-		         kvo.setRudgjacl(kvo.rudgjacl - 100);
-
-		         System.out.println("용희 레벨업!!" + "현재 레벨은 " + kvo.leb);
-		         System.out.println();
-		      }
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -98,31 +77,24 @@ public class DAO2 {
 
 	// 로그인
 	// 회원 정보 Select 메소드
-
-	public int select(String id, String pw) {
+	public boolean select(String id, String pw) {
 
 		getConn();
 
 		try {
-			// 실행할 sql문 작성
 
 			String sql = "select * from user_info where id=? and pw=?";
 
 			psmt = conn.prepareStatement(sql);
-
 			psmt.setString(1, id);
 			psmt.setString(2, pw);
 
 			rs = psmt.executeQuery();
 
-			while (rs.next()) {
-				String getId = rs.getString(1); // 숫자는 컬럼의 순서
-				String getPw = rs.getString(2);
-
-//				System.out.println(getId + "/" + getPw);
-
+			while(rs.next()) {
+				
 				if (rs != null) {
-					result = 1;
+					return true;
 				}
 			}
 		} catch (Exception e) {
@@ -132,14 +104,15 @@ public class DAO2 {
 		} finally {
 			close();
 		}
-		return result;
+		return false;
 	}
-	public int selectstate(String nick) {
+	
+	//상태확인
+	public boolean selectstate(String nick) {
 		
 		getConn();
 		
 		try {
-			// 실행할 sql문 작성
 			
 			String sql = "select * from dama where nick=?";
 			
@@ -148,26 +121,26 @@ public class DAO2 {
 			psmt.setString(1, nick);
 			
 			rs = psmt.executeQuery();
+			System.out.println("\n====(*용희*) 상태확인=====\n");
+
+			String getNick = rs.getString(1);
+			int getLeb = rs.getInt(4);
+			int getEnergy = rs.getInt(5);
+			//경험치
+			String getDama_date = rs.getString(7);
+
+			//현재는 에너지로 해놓을테지만 경험치 불러와야함
+			//에너지도 넣으면 좋겠네
+			System.out.println("NICK : " + getNick );
+			System.out.println("LEVEL : "+ getLeb);
+			System.out.println("ENERGY : " + getEnergy);
 			System.out.println();
-			System.out.println("====(*용희*) 상태확인=====");
-			System.out.println();
-			while (rs.next()) {
-				String getNick = rs.getString(1);
-				int getLeb = rs.getInt(4);
-				int getEnergy = rs.getInt(5);
-				String getDama_date = rs.getString(7);
-//				String getenergy = rs.getString(6);
-				//현재는 에너지로 해놓을테지만 경험치 불러와야함
-				//에너지도 넣으면 좋겠네
-				System.out.println("NICK : " + getNick );
-				System.out.println("LEVEL : "+ getLeb);
-				System.out.println("ENERGY : " + getEnergy);
-				System.out.println();
-				
-				if (rs != null) {
-					result = 1;
-				}
+			
+			if (rs != null) {
+				return true;
 			}
+		
+
 		} catch (Exception e) {
 			
 			e.printStackTrace();
@@ -175,17 +148,18 @@ public class DAO2 {
 		} finally {
 			close();
 		}
-		return result;
+		return false;
 	}
 	
-	public int selectnick(String nick) {
+
+ 
+	//어따썼는지를 모르겠어요
+	public boolean selectnick(String nick) {
 		
 		getConn();
-		
 		try {
-			// 실행할 sql문 작성
 			
-			String sql = "select NICK from dama where id=?";
+			String sql = "select * from dama where nick=?";
 			
 			psmt = conn.prepareStatement(sql);
 			
@@ -193,13 +167,13 @@ public class DAO2 {
 			
 			rs = psmt.executeQuery();
 			
-			while (rs.next()) {
-				String getId = rs.getString(1); // 숫자는 컬럼의 순서
+			while(rs.next()) {
+				String getNick = rs.getString(1); // 숫자는 컬럼의 순서
 				
-				System.out.println(getId);
+				System.out.println(getNick);
 				
 				if (rs != null) {
-					result = 1;
+					return true;
 				}
 			}
 		} catch (Exception e) {
@@ -209,9 +183,12 @@ public class DAO2 {
 		} finally {
 			close();
 		}
-		return result;
+		return false;
 	}
-	public int selectchar(String id) {
+
+	
+	//나의 모든 캐릭터 출력
+	public boolean selectchar(String id) {
 		
 		getConn();
 		
@@ -238,7 +215,7 @@ public class DAO2 {
 						+ getLeb + "\t" + "date : " + getDama_date);
 				
 				if (rs != null) {
-					result = 1;
+					return true;
 				}
 			}
 		} catch (Exception e) {
@@ -248,11 +225,11 @@ public class DAO2 {
 		} finally {
 			close();
 		}
-		return result;
+		return false;
 	}
 
+	
 	// 순위 메소드
-
 	public void selectAll() {
 
 		getConn();
@@ -288,8 +265,7 @@ public class DAO2 {
 
 	}
 
-	// 다마 테이블에 등록 메소드
-
+	// 다마고치 등록 메소드
 	public int insertreg(String id, String nick, String xkdlq) {
 
 		getConn();
@@ -317,16 +293,14 @@ public class DAO2 {
 	}
 
 	// 다마 죽었을 때 캐릭 삭제
-
-	public void deletedama(String id) {
+	public void deletedama(String nick) {
 		getConn();
 
 		try {
-			String sql = "delete from dama where id=?";
+			String sql = "delete from dama where nick=?";
 
 			psmt = conn.prepareStatement(sql);
-			
-			psmt.setString(1, id);
+			psmt.setString(1, nick);
 			
 
 			psmt.executeUpdate();
@@ -341,6 +315,7 @@ public class DAO2 {
 	}
 	
 	//level update
+	//다시
 	public int lebupdate(String nick , int leb) {
 
 		getConn();
@@ -367,6 +342,7 @@ public class DAO2 {
 	}
 	
 	//energy update
+	//다시
 	public int energyupdate(String nick , int energy) {
 
 		getConn();

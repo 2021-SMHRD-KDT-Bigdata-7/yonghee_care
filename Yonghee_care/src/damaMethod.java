@@ -80,7 +80,9 @@ public class damaMethod extends KVO implements idama {
       }
    }
 
-// 현재 상태 확인
+   
+   
+// 현재 상태 확인========>필요없음
    @Override
    public void printInfo() {
       System.out.println("===용히 상태 확인===");

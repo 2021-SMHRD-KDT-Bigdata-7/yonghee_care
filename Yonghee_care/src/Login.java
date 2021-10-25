@@ -8,8 +8,9 @@ public class Login {
 	
 	int cnt = 0;
 	
-	DAO dao = new DAO();
+	DAO2 dao = new DAO2();
 
+	//필요없음
 	public int login(String id, String pw) {
 
 		/// 로그인
@@ -20,7 +21,7 @@ public class Login {
 //		String pw = sc.next();
 
 		cnt = dao.select(id, pw);
-
+		
 		dao.close();
 		return cnt;
 	}

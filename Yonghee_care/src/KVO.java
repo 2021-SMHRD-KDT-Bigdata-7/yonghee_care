@@ -7,7 +7,14 @@ public class KVO {
    int leb;
    int energy = 0 ;
    String id;
-   Date dama_date;
+   String pw;
+   public String getPw() {
+	return pw;
+}
+public void setPw(String pw) {
+	this.pw = pw;
+}
+Date dama_date;
    public KVO() {}
    public KVO(String nick, String xkdlq, int rudgjacl, int leb, int energy, String id, Date dama_date) {
       super();

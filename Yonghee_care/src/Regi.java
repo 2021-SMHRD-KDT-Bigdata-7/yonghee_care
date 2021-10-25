@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Regi extends KVO{
    Scanner sc = new Scanner(System.in);
-   DAO dao = new DAO();
+   DAO2 dao = new DAO2();
    KVO kvo = new KVO(0,1,100);
    String nick;
    String xkdlq;
