@@ -3,99 +3,110 @@ import java.util.Scanner;
 
 public class Main {
 
-   public static void main(String[] args) {
+	public static void main(String[] args) {
 
+		Scanner sc = new Scanner(System.in);
+		Random rd = new Random();
+		DAO dao = new DAO();
+		KVO kvo = new KVO();
+		Regi regi = new Regi();
+		PlayGame pg = new PlayGame();
+		Login login = new Login();
 
-      Scanner sc = new Scanner(System.in);
-      Random rd = new Random();
+		kvo.id = null;
+		kvo.pw = null;
+		kvo.nick = null;
 
-      String id = null;
-      String pw = null;
-      
-      // 어떤 기능을 선택하더라도 dao에서 메소드를 호출하기 위함
-      DAO dao = new DAO();
-      Regi regi = new Regi();
-      PlayGame pg = new PlayGame();
-      //로그인 객체 생성
-      Login login = new Login();
-      KVO kvo = new KVO();
-      //상태확인을 위한 인터페이스 접근
-//      idama id = null;
-      
-      //게임플레이 객체생성
-      
-      
-      boolean result = false;
+		// 寃뚯엫�뵆�젅�씠 媛앹껜�깮�꽦
 
-      while (true) {
-         System.out.print("[1]로그인 [2]회원가입 [3]종료 >>");
+		boolean result = false;
 
-         int menu = sc.nextInt();
+		while (true) {
+			System.out.print("[1]로그인 [2]회원가입 [3]종료 >> ");
 
-         if (menu == 1) {
-            //로그인
+			int menu = sc.nextInt();
 
-        		System.out.println("아이디를 입력하세요");
-        		id = sc.next();
-        		System.out.println("비밀번호를 입력하세요");
-        		pw = sc.next();
+			if (menu == 1) {
+				// 濡쒓렇�씤
 
-        		int cnt = dao.select(id, pw);
+				System.out.print("ID >> ");
+				kvo.id = sc.next();
+				System.out.print("PASSWORD >> ");
+				kvo.pw = sc.next();
 
-        	
-            if(login.login(id, pw) == 1) {   //여기
-               //로그인 성공 후 다마고치 키우기
-               while(true) {
-                  
-                  
-                  System.out.print("[1]다마고치등록 [2]다마고치키우기 [3]다마고치상태확인 [4]랭킹확인 [5]종료 >>");
-                  
-                  int menu2 = sc.nextInt();
-                  
-                  if(menu2 ==1) {
-                	  
-                	  regi.register();
-                	  
-                  }else if(menu2 ==2) {
-                     pg.play();
-                     
-                     if(pg.endGame() == false) {
-                        dao.deletedama(id);
-                    	 break;
-                     }
-                     pg.levelUp();
-                  }else if(menu2 == 3) {
-                     //상태확인
-                	  dao.selectstate(id);
-                     pg.printInfo();
-                  }else if(menu2 == 4) {
-                     //랭킹확인
-                     dao.selectAll();
-                  }else if(menu2 == 5) {
-                     break;
-                  }else {
-                     System.out.println("다시입력하세요");
-                  }
-               }
-         
-            }else {
-               continue;
-            }
-            break;
-         } else if (menu == 2) {
-            //회원가입
-            login.join();
-            
-         }else if(menu ==3) {
-            System.out.println("프로그램 종료");
-            break;            
-         }
-         else {
-            System.out.println("다시입력하세요");
-         }
-      }   
-      
+				int cnt = dao.select(kvo.id, kvo.pw);
+				if (cnt == 1) {
+					// 濡쒓렇�씤 �꽦怨� �썑 �떎留덇퀬移� �꽑�깮
+					while (true) {
 
+						System.out.print("[1]등록 [2]불러오기 >> ");
 
-   }
+						int menu2 = sc.nextInt();
+
+						if (menu2 == 1) {
+							regi.register();
+							continue;
+
+						} else if (menu2 == 2) {
+							// �꽑�깮�븳 罹먮┃�꽣 遺덈윭�삤湲�
+							int cnt2 = dao.selectAll(kvo.id);
+							if (cnt2 == 1) {
+								System.out.print("캐릭터를 선택하세요 >> ");
+								kvo.nick = sc.next();
+								int cnt3 = dao.selectDama(kvo.nick);
+								if (cnt3 == 1)
+									break;
+								else
+									continue;
+							} else {
+								break;
+							}
+						}
+					}
+					System.out.println(kvo.nick + "이(가) 등장했습니다.");
+					while (true) {
+						System.out.print("[1]"+kvo.nick+" 키우기 [2]"+kvo.nick+" 상태확인 [3]랭킹확인 [4]종료 >> ");
+						int menu3 = sc.nextInt();
+						if (menu3 == 1) {
+							pg.play();
+
+							// 二쎌쑝硫� 罹먮┃�꽣 �궘�젣
+							if (pg.endGame() == false) {
+								dao.deletedama(kvo.nick);
+								break;
+							}
+
+							pg.levelUp();
+//							dao.lebupdate(kvo.nick, kvo.getLeb());
+
+						} else if (menu3 == 2) {
+							// �긽�깭�솗�씤
+							dao.selectstate(kvo.nick);
+						} else if (menu3 == 3) {
+							// �옲�궧�솗�씤
+							dao.selectRank();
+						} else if (menu3 == 4) {
+							break;
+						} else {
+							System.out.println("다시 입력 하세요");
+						}
+					}
+
+				} else {
+					continue;
+				}
+			} else if (menu == 2) {
+				// �쉶�썝媛��엯
+				login.join();
+
+			} else if (menu == 3) {
+				System.out.println("프로그램 종료");
+				break;
+			} else {
+				System.out.println("다시 입력 하세요");
+			}
+
+		}
+
+	}
 }

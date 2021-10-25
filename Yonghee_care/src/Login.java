@@ -8,16 +8,16 @@ public class Login {
 	
 	int cnt = 0;
 	
-	DAO2 dao = new DAO2();
+	DAO dao = new DAO();
 
-	//필요없음
+	//�븘�슂�뾾�쓬
 	public int login(String id, String pw) {
 
-		/// 로그인
+		/// 濡쒓렇�씤
 
-//		System.out.println("아이디를 입력하세요");
+//		System.out.println("�븘�씠�뵒瑜� �엯�젰�븯�꽭�슂");
 //		String id = sc.next();
-//		System.out.println("비밀번호를 입력하세요");
+//		System.out.println("鍮꾨�踰덊샇瑜� �엯�젰�븯�꽭�슂");
 //		String pw = sc.next();
 
 		cnt = dao.select(id, pw);
@@ -28,20 +28,20 @@ public class Login {
 	
 
 	public boolean join() {
-		System.out.println("가입 아이디 : ");
+		System.out.print("아이디를 입력하세요 : ");
 		String id = sc.next();
-		System.out.println("가입 비밀번호 : ");
+		System.out.print("비번을 입력하세요 : ");
 		String pw = sc.next();
 
-		// DAO클래스의 insert()에 접근하기위해 객체 생성
+		// DAO�겢�옒�뒪�쓽 insert()�뿉 �젒洹쇳븯湲곗쐞�빐 媛앹껜 �깮�꽦
 		int cnt = dao.insert(id, pw);
 
 		if (cnt > 0) {
-			System.out.println("가입완료! 어서와요");
+			System.out.println("가입완료");
 			return true;
 
 		} else {
-			System.out.println("가입실패,,저리가요");
+			System.out.println("가입실패");
 			return false;
 		}
 	}

@@ -1,79 +1,77 @@
 import java.sql.Date;
 
 public class KVO {
-   String nick;
-   String xkdlq;
-   int rudgjacl;
-   int leb;
-   int energy = 0 ;
-   String id;
-   String pw;
-   public String getPw() {
-	return pw;
-}
-public void setPw(String pw) {
-	this.pw = pw;
-}
-Date dama_date;
-   public KVO() {}
-   public KVO(String nick, String xkdlq, int rudgjacl, int leb, int energy, String id, Date dama_date) {
-      super();
-      this.nick = nick;
-      this.xkdlq = xkdlq;
-      this.rudgjacl = rudgjacl;
-      this.leb = leb;
-      this.energy = energy;
-      this.id = id;
-      this.dama_date = dama_date;
-   }
-   public KVO(int rudgjacl, int leb, int energy) {
-	      super();
-	      this.rudgjacl = rudgjacl;
-	      this.leb = leb;
-	      this.energy = energy;
-	   }
+	String nick;
+	String dmtype; /// xkdlq -> dmtype
+	int dmexp; // rudgjacl -> dmexp
+	int lv;
+	int energy = 0;
+	String id;
+	String pw;
+	Date dmdate; // dama_date -> dmdate
 
-   public String getNick() {
-      return nick;
-   }
-   public void setNick(String nick) {
-      this.nick = nick;
-   }
-   public String getXkdlq() {
-      return xkdlq;
-   }
-   public void setXkdlq(String xkdlq) {
-      this.xkdlq = xkdlq;
-   }
-   public int getRudgjacl() {
-      return rudgjacl;
-   }
-   public void setRudgjacl(int rudgjacl) {
-      this.rudgjacl = rudgjacl;
-   }
-   public int getLeb() {
-      return leb;
-   }
-   public void setLeb(int leb) {
-      this.leb = leb;
-   }
-   public int getEnergy() {
-      return energy;
-   }
-   public void setEnergy(int energy) {
-      this.energy = energy;
-   }
-   public String getId() {
-      return id;
-   }
-   public void setId(String id) {
-      this.id = id;
-   }
-   public Date getDama_date() {
-      return dama_date;
-   }
-   public void setDama_date(Date dama_date) {
-      this.dama_date = dama_date;
-   }
-   
+	public String getNick() {
+		return nick;
+	}
+
+	public void setNick(String nick) {
+		this.nick = nick;
+	}
+
+	public String getDmtype() {
+		return dmtype;
+	}
+
+	public void setDmtype(String dmtype) {
+		this.dmtype = dmtype;
+	}
+
+	public int getDmexp() {
+		return dmexp;
+	}
+
+	public void setDmexp(int dmexp) {
+		this.dmexp = dmexp;
+	}
+
+	public int getLv() {
+		return lv;
+	}
+
+	public void setLv(int lv) {
+		this.lv = lv;
+	}
+
+	public int getEnergy() {
+		return energy;
+	}
+
+	public void setEnergy(int energy) {
+		this.energy = energy;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getPw() {
+		return pw;
+	}
+
+	public void setPw(String pw) {
+		this.pw = pw;
+	}
+
+	public Date getDmdate() {
+		return dmdate;
+	}
+
+	public void setDmdate(Date dmdate) {
+		this.dmdate = dmdate;
+	}
+
 }

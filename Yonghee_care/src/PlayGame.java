@@ -6,7 +6,7 @@ public class PlayGame extends damaMethod {
 //   private static idama idama;
    Scanner sc = new Scanner(System.in);
    Random rd = new Random();
-
+   DAO dao = new DAO();
    damaMethod dm = new damaMethod();
 
    // 다마고치 등록
@@ -41,13 +41,16 @@ public class PlayGame extends damaMethod {
                System.out.println("용히는 배가 고푼뎁,,, ");
                if (stack == 1) {
                   // 에너지 깍기
-//                  idama.energyDown();
+                  dm.energyDown();
                   flag = false;
                }
                stack++;
                continue; // 수민쌤이 맞다고 했음 틀리면 수민쌤책임
             }
             dm.levelUp();
+            dao.lvupdate(nick, lv, dmexp);
+            dao.energyupdate(nick, energy);
+
          } else if (Ycare[num] == ("잠재우기")) {
             // 잠재우기
             if (Ycare[num] == (Ycare[menu2 - 1])) {
@@ -66,6 +69,9 @@ public class PlayGame extends damaMethod {
                continue; // 수민쌤이 맞다고 했음 틀리면 수민쌤책임
             }
             dm.levelUp();
+            dao.lvupdate(nick, lv, dmexp);
+            dao.energyupdate(nick, energy);
+
          } else if (Ycare[num] == ("놀아주기")) {
             // 놀아주기
             if (Ycare[num] == (Ycare[menu2 - 1])) {
@@ -84,6 +90,9 @@ public class PlayGame extends damaMethod {
 
             }
             dm.levelUp();
+            dao.lvupdate(nick, lv, dmexp);
+            dao.energyupdate(nick, energy);
+
          } else if (Ycare[num] == ("운동하기")) {
             if (Ycare[num] == (Ycare[menu2 - 1])) {
                // 정답- 경험치 40 에너지 ±30
@@ -101,6 +110,9 @@ public class PlayGame extends damaMethod {
 
             }
             dm.levelUp();
+            dao.lvupdate(nick, lv, dmexp);
+            dao.energyupdate(nick, energy);
+
          } else if (Ycare[num] == ("방치우기")) {
             if (Ycare[num] == (Ycare[menu2 - 1])) {
                // 정답- 경험치 40 에너지 ±30
@@ -118,6 +130,9 @@ public class PlayGame extends damaMethod {
 
             }
             dm.levelUp();
+            dao.lvupdate(nick, lv, dmexp);
+            dao.energyupdate(nick, energy);
+
          } else {
             System.out.println("다시입력하세요");
          }

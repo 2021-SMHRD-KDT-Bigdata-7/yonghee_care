@@ -7,7 +7,6 @@ public interface idama {
     public void exer();
     public void levelUp();
     public boolean endGame();
-    public void printInfo();
     public void energyDown();
     
 }
