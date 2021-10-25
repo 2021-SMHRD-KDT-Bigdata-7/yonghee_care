@@ -8,7 +8,6 @@ public class Main2 {
 		Scanner sc = new Scanner(System.in);
 		Random rd = new Random();
 
-
 		// 어떤 기능을 선택하더라도 dao에서 메소드를 호출하기 위함
 		DAO2 dao = new DAO2();
 		KVO kvo = new KVO();
@@ -17,8 +16,8 @@ public class Main2 {
 		// 로그인 객체 생성
 		Login login = new Login();
 
-		
-		kvo.id = null;;  //id가 업데이트가 안돼서 해줌
+		kvo.id = null;
+		; // id가 업데이트가 안돼서 해줌
 		kvo.pw = null;
 		kvo.nick = null;
 
@@ -53,61 +52,63 @@ public class Main2 {
 							continue;
 
 						} else if (menu2 == 2) {
-							//선택한 캐릭터 불러오기
+							// 선택한 캐릭터 불러오기
 							int cnt2 = dao.selectchar(kvo.id);
 							if (cnt2 == 1) {
 								System.out.println("선택할캐릭터의 닉네임을 입력해주세요 >>>");
 								kvo.nick = sc.next();
 								int cnt3 = dao.selectnick(kvo.nick);
-								if(cnt3 == 1) break;
-								else continue;
-							} else {
-								break;
-							}
-						}
-						while (true) {
-							System.out.println(kvo.nick + "을/를 키워줄 메뉴를 골라주세요.");
-							System.out.print("[1]다마고치키우기 [2]다마고치 상태확인 [3]랭킹확인 [4]종료 >>");
-							int menu3 = sc.nextInt();
-							if (menu3 == 1) {
-								pg.play();
-								
-								//죽으면 캐릭터 삭제
-								if (pg.endGame() == false) {
-									dao.deletedama(kvo.nick);
+								if (cnt3 == 1)
 									break;
-								}
-								
-								pg.levelUp();
-								dao.lebupdate(kvo.nick, kvo.getLeb());
-
-							} else if (menu3 == 2) {
-								// 상태확인
-								dao.selectstate(kvo.nick);
-							} else if (menu3 == 3) {
-								// 랭킹확인
-								dao.selectAll();
-							} else if (menu3 == 4) {
-								break;
+								else
+									continue;
 							} else {
-								System.out.println("다시입력하세요");
+								break;
 							}
 						}
-
 					}
-				}else {
+					while (true) {
+						System.out.println(kvo.nick + "을/를 키워줄 메뉴를 골라주세요.");
+						System.out.print("[1]다마고치키우기 [2]다마고치 상태확인 [3]랭킹확인 [4]종료 >>");
+						int menu3 = sc.nextInt();
+						if (menu3 == 1) {
+							pg.play();
+
+							// 죽으면 캐릭터 삭제
+							if (pg.endGame() == false) {
+								dao.deletedama(kvo.nick);
+								break;
+							}
+
+							pg.levelUp();
+							dao.lebupdate(kvo.nick, kvo.getLeb());
+
+						} else if (menu3 == 2) {
+							// 상태확인
+							dao.selectstate(kvo.nick);
+						} else if (menu3 == 3) {
+							// 랭킹확인
+							dao.selectAll();
+						} else if (menu3 == 4) {
+							break;
+						} else {
+							System.out.println("다시입력하세요");
+						}
+					}
+
+				} else {
 					continue;
 				}
 			} else if (menu == 2) {
 				// 회원가입
 				login.join();
 
-			}else if (menu == 3) {
+			} else if (menu == 3) {
 				System.out.println("프로그램 종료");
 				break;
 			} else {
 				System.out.println("다시입력하세요");
-			} 
+			}
 
 		}
 
